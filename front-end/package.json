@@ -1,10 +1,9 @@
 {
-  "name": "recast.ly",
+  "name": "Sonnet-Bot",
   "version": "1.1.0",
-  "description": "Making YouTube with React and ES6",
-  "author": "Hack Reactor <curriculum.team@hackreactor.com>",
+  "description": "Generate new Shakespearean sonnets",
+  "author": "Pix3lAssassin <th3koolperson@gmail.com>",
   "license": "UNLICENSED",
-  "private": true,
   "scripts": {
     "test": "live-server --open=./SpecRunner.html --port=8081",
     "start": "live-server",
