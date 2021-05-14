@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-var SonnetButton = () => {
+var SonnetButton = ({handleSonnetButton}) => {
   return (
-    <div className="search-bar form-inline">
-      <button className="btn hidden-sm-down">
-        New Sonnet <i class="fas fa-sync-alt"></i>
+    <div className="btn-container">
+      <button className="btn btn-inline hidden-sm-down" onClick={() => handleSonnetButton()}>
+        <span className="sonnet-text">New Sonnet</span><span className="fas fa-sync-alt"></span>
       </button>
     </div>
   );
