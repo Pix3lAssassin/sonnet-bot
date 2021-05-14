@@ -4,16 +4,10 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 // Actions
-import unspiedChangeVideo from '../../src/actions/currentVideo.js';
-import unspiedHandleVideoSearch from '../../src/actions/search.js';
-import unspiedChangeVideoList from '../../src/actions/videoList.js';
+import unspiedChangeSonnet from '../../src/actions/changeSonnet.js';
 
 // Action spies
 export var changeVideo = sinon.spy(unspiedChangeVideo);
-export var handleVideoSearch = sinon.spy(unspiedHandleVideoSearch);
-export var changeVideoList = sinon.spy(unspiedChangeVideoList);
-
-
 
 
 export var mockReducer = sinon.spy(function(state = {lastAction: ''}, action) {

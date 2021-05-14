@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-var VideoPlayer = ({video}) => (
+var Sonnet = ({video}) => (
   !video
     ? <div className="video-player">Please wait...</div>
     : <div className="video-player">
@@ -21,4 +21,4 @@ VideoPlayer.propTypes = {
   video: PropTypes.object.isRequired
 };
 
-export default VideoPlayer;
+export default Sonnet;

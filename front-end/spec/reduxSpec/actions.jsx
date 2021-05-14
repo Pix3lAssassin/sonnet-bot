@@ -1,5 +1,4 @@
-import dummyData from '../../src/data/exampleVideoData.js';
-import { mockStore, mockReducer, mockYouTubeApi, changeVideo, changeVideoList, handleVideoSearch } from './reduxMocks.jsx';
+import { mockStore, mockReducer, mockYouTubeApi, changeVideo } from './reduxMocks.jsx';
 
 var apiCall;
 

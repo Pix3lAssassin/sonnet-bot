@@ -1,7 +1,6 @@
 import rootReducer from '../../src/reducers/main.js';
-import currentVideoReducer from '../../src/reducers/currentVideo.js';
-import videoListReducer from '../../src/reducers/videoList.js';
-import { mockReducer, mockStore, changeVideo, changeVideoList } from './reduxMocks.jsx';
+import reduceSonnet from '../../src/reducers/reduceSonnet.js';
+import { mockReducer, mockStore, changeVideo } from './reduxMocks.jsx';
 
 var fakeState = {
   currentVideo: {script: 'This is my only line.'},
