@@ -1,16 +1,14 @@
 import React from 'react';
-import Sonnet from './Sonnet.js';
-import SonnetButton from './SonnetButton.js';
+import SonnetContainer from '../containers/SonnetContainer.js';
+import SonnetButtonContainer from '../containers/SonnetButtonContainer.js';
 
 var App = () => {
   return (
     <div>
-      <div className="navbar"></div>
-      <div className="row">
-        <div className="col-md-8">
-          <SonnetButton />
-          <Sonnet />
-        </div>
+      <div className="banner"></div>
+      <div className="container">
+        <SonnetButtonContainer />
+        <SonnetContainer />
       </div>
     </div>
   );
