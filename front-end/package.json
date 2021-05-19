@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
+    "core-js": "^3.12.1",
     "enzyme-adapter-react-16": "^1.15.5",
     "enzyme-redux": "^0.2.1",
     "fs": "0.0.1-security",
@@ -24,7 +25,8 @@
     "react-dom": "^16.14.0",
     "react-redux": "^5.0.6",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

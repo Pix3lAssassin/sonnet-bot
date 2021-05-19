@@ -7,8 +7,8 @@ import { shallowWithStore } from 'enzyme-redux';
 import { changeVideoList, mockReducer } from './reduxMocks.jsx';
 
 
-import SearchContainer from '../../src/containers/SearchContainer.js';
-import VideoPlayerContainer from '../../src/containers/VideoPlayerContainer.js';
+import SonnetContainer from '../../src/containers/SonnetContainer.js';
+import SonnetButtonContainer from '../../src/containers/SonnetButtonContainer.js';
 
 configure({ adapter: new Adapter() });
 

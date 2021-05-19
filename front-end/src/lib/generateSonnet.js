@@ -1,4 +1,4 @@
-var url = '127.0.0.1:3000';
+var url = 'http://localhost:3000';
 
 var getSonnet = () => {
   return fetch(url + '/sonnet')
@@ -9,10 +9,9 @@ var getSonnet = () => {
       }
 
       // Examine the text in the response
-      response.text()
-        .then(text => text)
-        .catch(err => console.log(err));
-    });
+      return response.json();
+    })
+    .catch(err => console.log(err));
 };
 
-export default generateSonnet;
+export default getSonnet;
