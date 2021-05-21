@@ -1,12 +1,12 @@
 import Redux from 'redux';
 
-var reduceSonnet = (state = '', action) => {
+var reduceSeed = (state = '', action) => {
   switch (action.type) {
   case 'CHANGE_SONNET':
-    return action.sonnet;
+    return action.seed;
   default:
     return state;
   }
 };
 
-export default reduceSonnet;
+export default reduceSeed;
