@@ -2,6 +2,7 @@
 // Generator Model //////////////////////////////////////////////////////////////////
 
 const generator = require('./generator/generator');
+const cors = require('cors');
 
 // Configure Express ///////////////////////////////////////////////////////////
 
@@ -15,12 +16,14 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '../front-end')));
+app.use(cors());
 
 // RESTful Routes for CRUD operations //////////////////////////////////////////
 
 // Read all (cRud) -- collection route
 app.get('/sonnet', (req, res) => {
-  res.status(400).send(generator.generateSonnet());
+  var sonnetObj = generator.generateSonnet();
+  res.status(200).send(sonnetObj);
 });
 
 // Read one (cRud) -- member route
