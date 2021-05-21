@@ -1,4 +1,7 @@
 var dictionary = require('./dictionary');
+var pronouncing = require('pronouncing');
+
+dictionary.initialize();
 
 var sfc32 = (a, b, c, d) => {
   return function() {
@@ -31,12 +34,20 @@ exports.generateSonnet = (seed = null) => {
     seed = Math.random().toString(16).slice(2);
   }
   var seedFn = xmur3(seed);
-  var rand = sfc32(seed(), seed(), seed(), seed());
+  var rand = sfc32(seedFn(), seedFn(), seedFn(), seedFn());
 
-  var line = '';
-  for (var i = 0; i < 5; i++) {
-    line += ' ' + dictionary.getRandomNextWord();
+  var line = dictionary.getRandomLineStart();
+  for (var i = 0; i < 4; i++) {
+    line.push(dictionary.getRandomNextWord(line[i].toLowerCase() + ' ' + line[i + 1].toLowerCase()));
   }
+  for (var i = 0; i < line.length; i++) {
+    console.log(line[i]);
+    var phones = pronouncing.phonesForWord(line[i]);
+    if (phones.length > 0) {
+      console.log(pronouncing.stresses(phones[0]));
+    }
+  }
+  line = line.join(' ');
 
   return { seed, sonnet: line };
 };
