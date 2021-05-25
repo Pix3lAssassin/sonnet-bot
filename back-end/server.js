@@ -28,7 +28,8 @@ app.get('/sonnet', (req, res) => {
 
 // Read one (cRud) -- member route
 app.get('/sonnet/:id', (req, res) => {
-  generator.generateSonnet(req.params.id);
+  var sonnetObj = generator.generateSonnet(req.params.id);
+  res.status(200).send(sonnetObj);
 });
 
 // Start & Initialize Web Server ///////////////////////////////////////////////
