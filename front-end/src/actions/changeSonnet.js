@@ -1,16 +1,19 @@
 import getSonnet from '../lib/generateSonnet.js';
+import changeSeed from './changeSeed.js';
 
-export var changeSonnet = (sonnetObj) => ({
+export var changeSonnet = (sonnet) => ({
   //TODO:  Return object with type and string for sonnet
   type: 'CHANGE_SONNET',
-  sonnet: sonnetObj.sonnet,
-  seed: sonnetObj.seed
+  sonnet
 });
 
-export var newSonnet = () => {
+export var newSonnet = (seed = undefined) => {
   return (dispatch) => {
-    getSonnet()
-      .then((sonnetObj) => dispatch(changeSonnet(sonnetObj)))
+    getSonnet(seed)
+      .then((sonnetObj) => {
+        dispatch(changeSonnet(sonnetObj.sonnet));
+        dispatch(changeSeed(sonnetObj.seed));
+      })
       .catch(err => console.log(err));
   };
 };

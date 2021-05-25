@@ -1,11 +1,11 @@
 var url = 'http://localhost:3000';
 
-var getSonnet = () => {
-  return fetch(url + '/sonnet')
+var getSonnet = (seed) => {
+  return fetch(url + '/sonnet' + (seed !== undefined ? '/' + encodeURIComponent(String(seed)) : ''))
     .then((response) => {
       if (response.status !== 200) {
         console.log('Looks like there was a problem. Status Code: ' + response.status);
-        return;
+        return { seed, sonnet: 'Error'};
       }
 
       // Examine the text in the response

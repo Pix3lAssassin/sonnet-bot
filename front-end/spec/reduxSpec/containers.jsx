@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { mount, shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallowWithStore } from 'enzyme-redux';
-import { changeVideoList, mockReducer } from './reduxMocks.jsx';
+import { mockReducer } from './reduxMocks.jsx';
 
 
 import SonnetContainer from '../../src/containers/SonnetContainer.js';

@@ -4,8 +4,14 @@ import { newSonnet } from '../actions/changeSonnet.js';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSonnetButton: () => dispatch(newSonnet())
+    handleSonnetButton: (seed) => dispatch(newSonnet(seed))
   };
 };
 
-export default connect(null, mapDispatchToProps)(SonnetButton);
+const mapStateToProps = (state) => {
+  return {
+    seed: state.seed
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SonnetButton);
