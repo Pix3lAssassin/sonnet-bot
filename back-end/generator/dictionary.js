@@ -9,6 +9,10 @@ var lineEnds = [];
 
 exports.sonnetsDir = path.join(__dirname, '../data/sonnets.txt');
 
+exports.cleanStr = (s) => {
+  return s.replace(/[^A-Za-z0-9\-]/, '').trim();
+};
+
 var readSonnets = () => {
   console.log(exports.sonnetsDir);
   return fs.readFileAsync(exports.sonnetsDir, 'utf8')
@@ -21,11 +25,15 @@ var readSonnets = () => {
 
 var createDictionary = () => {
   readSonnets().then((lines) => {
-    for (var lineIndex = 0; lineIndex < lines.length; lineIndex++) {
+    for (var lineIndex = 0; lineIndex < lines.length - 1; lineIndex++) {
       var words = lines[lineIndex].split(' ');
+      var wordsLine2 = lines[lineIndex + 1].split(' ');
+      words.push(...wordsLine2);
       lineStarts.push([words[0], words[1]]);
       for (var tupleStart = 0; tupleStart < words.length - 2; tupleStart++) {
-        var tuple = `${words[tupleStart].toLowerCase()} ${words[tupleStart + 1].toLowerCase()}`;
+        var tuple = exports.cleanStr(words[tupleStart].toLowerCase()) + ' ' +
+          exports.cleanStr(words[tupleStart + 1].toLowerCase());
+
         if (dictionary[tuple]) {
           dictionary[tuple].push(words[tupleStart + 2]);
         } else {
@@ -38,11 +46,15 @@ var createDictionary = () => {
 
 var createReverseDictionary = () => {
   readSonnets().then((lines) => {
-    for (var lineIndex = 0; lineIndex < lines.length; lineIndex++) {
-      var words = lines[lineIndex].split(' ');
+    for (var lineIndex = lines.length - 2; lineIndex > 1; lineIndex--) {
+      var words = lines[lineIndex - 1].split(' ');
+      var wordsLine2 = lines[lineIndex].split(' ');
+      words.push(...wordsLine2);
       lineEnds.push([words[words.length - 1], words[words.length - 2]]);
-      for (var tupleStart = words.length - 1; tupleStart < 2; tupleStart--) {
-        var tuple = `${words[tupleStart].toLowerCase()} ${words[tupleStart - 1].toLowerCase()}`;
+      for (var tupleStart = words.length - 1; tupleStart > 1; tupleStart--) {
+        var tuple = exports.cleanStr(words[tupleStart].toLowerCase()) + ' ' +
+          exports.cleanStr(words[tupleStart - 1].toLowerCase());
+
         if (reverseDictionary[tuple]) {
           reverseDictionary[tuple].push(words[tupleStart - 2]);
         } else {
@@ -53,25 +65,25 @@ var createReverseDictionary = () => {
   });
 };
 
-exports.getRandomLineStart = () => {
-  return lineStarts[Math.floor(lineStarts.length * Math.random())];
+exports.getRandomLineStart = (randFloat) => {
+  return lineStarts[Math.floor(lineStarts.length * randFloat)];
 };
 
-exports.getRandomLineEnd = () => {
-  return lineEnds[Math.floor(lineEnds.length * Math.random())];
+exports.getRandomLineEnd = (randFloat) => {
+  return lineEnds[Math.floor(lineEnds.length * randFloat)];
 };
 
-exports.getRandomNextWord = (tuple) => {
+exports.getRandomNextWord = (tuple, randFloat) => {
   if (dictionary[tuple]) {
-    return dictionary[tuple][Math.floor(dictionary[tuple].length * Math.random())];
+    return dictionary[tuple][Math.floor(dictionary[tuple].length * randFloat)];
   } else {
     return null;
   }
 };
 
-exports.getRandomLastWord = (tuple) => {
+exports.getRandomLastWord = (tuple, randFloat) => {
   if (reverseDictionary[tuple]) {
-    return reverseDictionary[tuple][Math.floor(dictionary[tuple].length * Math.random())];
+    return reverseDictionary[tuple][Math.floor(dictionary[tuple].length * randFloat)];
   } else {
     return null;
   }
