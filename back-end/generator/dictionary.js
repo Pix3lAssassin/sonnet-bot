@@ -6,11 +6,12 @@ var dictionary = {};
 var lineStarts = [];
 var reverseDictionary = {};
 var lineEnds = [];
+var rhymingEnds = [];
 
 exports.sonnetsDir = path.join(__dirname, '../data/sonnets.txt');
 
 exports.cleanStr = (s) => {
-  return s.replace(/[^A-Za-z0-9\-]/, '').trim();
+  return s.replace(/[^A-Za-z0-9]/g, '').trim();
 };
 
 var readSonnets = () => {
@@ -65,12 +66,27 @@ var createReverseDictionary = () => {
   });
 };
 
+exports.findLineEnding = (word) => {
+  for (var endIndex = 0; endIndex < lineEnds; endIndex++) {
+    if (word === exports.cleanStr(lineEnds[endIndex][0])) {
+      return endIndex;
+    }
+  }
+  return -1;
+};
+
+exports.getLineEnding = (index) => {
+  return lineEnds[index];
+};
+
 exports.getRandomLineStart = (randFloat) => {
   return lineStarts[Math.floor(lineStarts.length * randFloat)];
 };
 
-exports.getRandomLineEnd = (randFloat) => {
-  return lineEnds[Math.floor(lineEnds.length * randFloat)];
+exports.getRandomLineEnd = (randFloat, randFloat2) => {
+  var sonnet = Math.floor(lineEnds.length / 14 * randFloat) * 14;
+  var lines = [1, 3, 5, 7, 9, 11, 12, 13];
+  return lineEnds[sonnet + lines[Math.floor(lines.length * randFloat2)]];
 };
 
 exports.getRandomNextWord = (tuple, randFloat) => {
@@ -83,7 +99,7 @@ exports.getRandomNextWord = (tuple, randFloat) => {
 
 exports.getRandomLastWord = (tuple, randFloat) => {
   if (reverseDictionary[tuple]) {
-    return reverseDictionary[tuple][Math.floor(dictionary[tuple].length * randFloat)];
+    return reverseDictionary[tuple][Math.floor(reverseDictionary[tuple].length * randFloat)];
   } else {
     return null;
   }
