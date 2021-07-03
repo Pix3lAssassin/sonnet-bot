@@ -9,11 +9,9 @@
     "npm": "6.14.8"
   },
   "scripts": {
-    "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
-    "start": "npx nodemon ./server.js",
-    "clean": "rm -rf datastore/data/* datastore/counter.txt",
-    "lint": "eslint ./",
-    "test": "mocha test"
+    "start": "node server.js",
+    "start-dev": "npx nodemon ./server.js",
+    "test": "jest"
   },
   "dependencies": {
     "bluebird": "^3.7.2",
@@ -22,13 +20,16 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "pronouncing": "github:aparrish/pronouncingjs",
-    "sprintf-js": "^1.1.2",
+    "simple-spellchecker": "^1.0.2",
+    "thesaurus": "^0.0.1",
     "underscore": "^1.13.1"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
-    "mocha": "^5.2.0",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-react": "^7.24.0",
+    "jest": "^27.0.6",
     "nodemon": "^2.0.6"
   }
 }

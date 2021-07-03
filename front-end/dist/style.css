@@ -7,6 +7,7 @@ html, body {
 body {
   background: #8f9eb0;
   overflow: hidden;
+  margin: 0px;
 }
 
 .banner {
@@ -21,6 +22,11 @@ body {
 .container {
   background: #d5d9e3;
   height: 2000px;
+  margin: auto;
+  width: 60%;
+  min-width: 450px;
+  padding: 10px;
+  font-size: 1.25em;
 }
 
 .btn-container {
@@ -52,12 +58,19 @@ body {
   align-items: center;
 }
 
-.btn .sonnet-text {
-  margin-right: 10px;
+.seed-form {
+  font-size: 1em;
+  width: 250px;
+}
+
+.button-text {
+  margin-right: 15px;
+  padding: 3px;
 }
 
 .sonnet-text {
   white-space: pre-line;
+  margin-top: 10px;
 }
 
 .video-player-details {

@@ -12,7 +12,7 @@ var SonnetButton = ({seed, handleSonnetButton}) => {
       <span>Seed:</span>
       <input type="text" className="seed-form" value={text} onChange={handleChange} />
       <button className="btn btn-inline hidden-sm-down" onClick={() => handleSonnetButton(text)}>
-        <span className="sonnet-text">Generate Poem</span><span className="fas fa-sync-alt"></span>
+        <span className="button-text">Generate Poem</span><span className="fas fa-sync-alt"></span>
       </button>
       <span className="current-seed">Current Seed: {seed}</span>
     </div>

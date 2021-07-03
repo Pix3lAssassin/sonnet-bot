@@ -1,14 +1,3 @@
-
-## Mac OSX ##
-.DS_Store
-
-## NPM ##
 node_modules/
 
-## Compiled files ##
-compiled/
-dist/
-
-## API keys ##
-src/config/youtube.js
-compiled/config/youtube.js
+dist/app.bundle.js

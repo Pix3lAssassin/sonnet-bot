@@ -1,5 +1,2 @@
-.eslint*
-.eslintrc.js
-**/node_modules
-**/bower_components
-**/lib
+generator/pronouncing
+generator/prng.js
