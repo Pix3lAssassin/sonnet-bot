@@ -1,2 +1,1 @@
-cmudict* linguist-detectable=false
-*.txt linguist-detectable=false
+**/cmudict* linguist-detectable=false
